@@ -4,6 +4,9 @@ jobs:
   Dependances:
     runs-on: ubuntu-latest
     steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4
+
       - name: Dependances
         run: |
           docker run --rm \
@@ -13,13 +16,8 @@ jobs:
             --severity HIGH,CRITICAL \
             --exit-code 1 \
             /project/requirements.txt
+
   Dockerfile:
-    runs-on: ubuntu-latest
-    needs: Dependances
-    steps:
-      - name: Test Dockerfile
-        run: |
-            Dockerfile:
     runs-on: ubuntu-latest
     needs: Dependances
     steps:
@@ -34,6 +32,7 @@ jobs:
             --severity HIGH,CRITICAL \
             --exit-code 1 \
             /project/Dockerfile
+
   Deploy:
     runs-on: ubuntu-latest
     needs: Dockerfile
