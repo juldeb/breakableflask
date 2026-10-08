@@ -15,7 +15,7 @@ jobs:
             --scanners vuln \
             --severity HIGH,CRITICAL \
             --exit-code 1 \
-            /project/requirements.txt
+            /project
 
   Dockerfile:
     runs-on: ubuntu-latest
